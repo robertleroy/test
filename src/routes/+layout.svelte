@@ -1,4 +1,5 @@
 <script>
+  import { base } from '$app/paths';
   import { savedLocations, sortOrder } from '$lib/store';
   import "./app.css";
   let title = "Home", newItem = "";
@@ -41,7 +42,7 @@
     <nav>
       {#each routes as route}
         <div class="route">
-          <a href={route.path}>{route.name}</a>
+          <a href="{base}{route.path}">{route.name}</a>
         </div>
       {/each}
     </nav>

@@ -1,17 +1,15 @@
 import adapter from "@sveltejs/adapter-static";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 import { mdsvex } from "mdsvex";
-const dev = process.argv.includes('dev');
-console.log(dev);
+// import { base } from '$app/paths';
+// const dev = process.argv.includes('dev');
+// console.log(dev);
 
 const config = {
   kit: {
-    adapter: adapter({
-      pages: 'docs', 
-      assets: 'docs', 
-    }),
+    adapter: adapter(),   
     paths: {
-      base: dev ? '' : '/test',
+      base: process.env.NODE_ENV === 'production' ? '/sveltekit-github-pages' : '',
     }
   },
   extensions: [".svelte", ".svelte.md", ".md", ".svx"],

@@ -19,15 +19,7 @@ let locationStore = JSON.parse(
     countryCode: "US",
     lat: 33.766656,
     lon: -116.417691,
-  },
-  {
-    id: "3",
-    city: "Franklin",
-    region: "NJ",
-    countryCode: "US",
-    lat: 40.504123,
-    lon: -74.516532,
-  },
+  }
 ];
 
 let orderStore = JSON.parse(browser && localStorage.getItem("sortOrder")) || [
