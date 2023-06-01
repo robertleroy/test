@@ -6,12 +6,13 @@
 		<meta name="viewport" content="width=device-width" />
 		<meta http-equiv="content-security-policy" content="">
 		<link href="./_app/immutable/assets/0.d48c7b2c.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.57ef106e.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.3f059b1c.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.f6ba03db.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.c0112209.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.6f7dcb49.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.b62e6e96.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.55b73d74.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/0.4e2d82bd.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/paths.57a068b8.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.b47e4f98.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.084cd95c.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.5af97a8f.js">
 		<link rel="modulepreload" href="./_app/immutable/nodes/3.02f80e44.js">
 	</head>
@@ -19,13 +20,13 @@
 		<div style="display: contents">
 
 
-<header class=" svelte-f9neu0"><div class="flex svelte-f9neu0"><div class="title"><a href="/">Home</a></div>
+<header class=" svelte-f9neu0"><div class="flex svelte-f9neu0"><div class="title"><a href="/test/">Home</a></div>
 
     <div class="newItem"><input type="text" placeholder="new item ..." value="">
         true</div>
 
-    <nav class="svelte-f9neu0"><div class="route"><a href="/">Home</a>
-        </div><div class="route"><a href="/about">About</a>
+    <nav class="svelte-f9neu0"><div class="route"><a href="/test/">Home</a>
+        </div><div class="route"><a href="/test/about">About</a>
         </div></nav></div></header>
 
 <main><div class="router svelte-f9neu0"><h2>Docs</h2>
@@ -36,7 +37,8 @@
 			
 			<script>
 				{
-					__sveltekit_18l18e2 = {
+					__sveltekit_uurltn = {
+						assets: "/test",
 						base: new URL(".", location).pathname.slice(0, -1),
 						env: {}
 					};
@@ -46,8 +48,8 @@
 					const data = [null,null];
 
 					Promise.all([
-						import("./_app/immutable/entry/start.57ef106e.js"),
-						import("./_app/immutable/entry/app.55b73d74.js")
+						import("./_app/immutable/entry/start.3f059b1c.js"),
+						import("./_app/immutable/entry/app.b47e4f98.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 3],
