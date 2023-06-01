@@ -1,6 +1,6 @@
-@import "$lib/styles/reset.css";
-@import "$lib/styles/forms.css";
-@import "$lib/styles/vsdark.css";
+@import "../lib/styles/reset.css";
+@import "../lib/styles/forms.css";
+@import "../lib/styles/vsdark.css";
 
 :root {
   --header-height: 4rem;

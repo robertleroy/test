@@ -30,7 +30,7 @@
 <header class="">
   <div class="flex">
     <div class="title">
-      <a href="/">{title}</a>
+      <a href="{base}/">{title}</a>
     </div>
 
     <div class="newItem">
