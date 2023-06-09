@@ -1,94 +1,111 @@
 <script>
-	import Sortable from 'sortablejs';
-  import { onMount, tick } from 'svelte';
-  import { savedLocations, sortOrder } from '$lib/store';
-  import Popup from '$lib/components/Popup.svelte';
+  import Sortable from "sortablejs";
+  import { onMount, tick } from "svelte";
+  import { savedLocations, sortOrder } from "$lib/store";
+  import Popup from "$lib/components/Popup.svelte";
 
-  let sortable1, element1, selectedItem;
+  let sortable, draglist, selectedItem;
 
-  async function setOrder() {
-		await tick();
-		$sortOrder = (sortable1.toArray());
-    // $store.sortOrder1 = sortOrder1;
-	}
-  
-  async function deleteItem(id) {
-    // console.log("deleteItem", id);
-    $savedLocations = $savedLocations.filter(el => el.id !== id);
-    $sortOrder = $sortOrder.filter(el => el !== id);
-    // await tick();
-    // setOrder();
+  // sort_order();
 
+  async function sort_order() {
+    // if (!$sortOrder.length) return;
+    await tick();
+    $sortOrder = sortable.toArray();
   }
-  
+
+  function reorderList() {
+    let arr = [];
+    for (let i = 0; i < $sortOrder.length; i++) {
+      const obj = $savedLocations.find((el) => el.id === $sortOrder[i]);
+      arr.push(obj);
+    }
+    $savedLocations = [...arr];
+  }
+
+  async function deleteItem(id) {
+    $savedLocations = $savedLocations.filter((el) => el.id !== id);
+    $sortOrder = $sortOrder.filter((el) => el !== id);
+    reorderList();
+  }
+
   onMount(() => {
-    sortable1 = Sortable.create(element1, {
+    sortable = Sortable.create(draglist, {
       animation: 300,
       touchStartThreshold: 3,
       ghostClass: "ghostClass",
       direction: "vertical",
       store: {
-        get: function () { return $sortOrder; },
-        set: function () { setOrder(); },
+        get: function () {
+          return $sortOrder;
+        },
+        set: function () {
+          sort_order();
+        },
       },
     });
   });
 </script>
 
-<div class="dragzone" bind:this={element1} >
-  {#each $savedLocations as item (item.id)}
-  <div class="item" data-id={item.id} on:keypress on:click={() => selectedItem = item}>
-    <div class="handle">
-      <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" >
-        <path d="M0 0h24v24H0V0z" fill="none"/>
-        <path fill="currentColor" d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-      </svg> -->
-
-      &vellip;&vellip;
+<div class="dragzone">
+  {#if $savedLocations?.length}
+    <div bind:this={draglist}>
+      {#each $savedLocations as item (item.id)}
+        <div
+          class="item"
+          data-id={item.id}
+          on:keypress
+          on:click={() => {
+            selectedItem = item;
+            console.log(item.city);
+          }}
+        >
+          <div class="handle">&vellip;&vellip;</div>
+          <div class="city_state">{item.city}, {item.region}</div>
+          <Popup on:delete={deleteItem(item.id)} />
+        </div>
+      {/each}
     </div>
-    <div class="city_state">{item.id}: {item.city}, {item.region}</div>
-    <Popup on:delete={deleteItem(item.id)}/>
-  </div>
-  {/each}
+  {:else}
+    <div
+      style="text-align: center; line-height: 2.5; font-variant: small-caps; opacity: 0.6"
+    >
+      list
+    </div>
+  {/if}
 </div>
 
-<br>
+<br />
 
-<div class="sortOrder">sortOrder: {$sortOrder}</div>
-<div class="selectedItem">selectedItem: {selectedItem?.city ?? ""}</div>
+<!-- <div class="sortOrder">sortOrder: {$sortOrder}</div>
+<div class="selectedItem">selectedItem: {selectedItem?.city ?? ""}</div> -->
 
 <style lang="postcss">
   .dragzone {
     width: max-content;
-    background: gainsboro;
+    background: hsl(0, 0%, 91%);
     border-radius: 0.5rem;
     overflow: hidden;
+    width: 500px;
+    min-height: 2.5em;
+    margin: 0 auto;
   }
   .item {
     display: flex;
-    gap: 0 1ch;
+    gap: 0 1rem;
     align-items: center;
-    cursor: grab;
-    padding: 0.5rem ;
+    cursor: default;
+    padding: 0.5rem;
     background-color: #fff;
-    /* border-bottom: 1px solid #cccccc6f; */
     box-shadow: inset 0 -1px 0 #cccccc6f;
   }
-  /* .item:not(:last-of-type) {
-    box-shadow: inset 0 -1px 0 #cccccc6f;
-  } */
   .city_state {
     flex: 1;
-    min-width: 20rem;
   }
   .handle {
     cursor: move;
   }
-  
-  /* svg {
-    height: 1.5rem;
-    width: 1.5rem;
-    font-size: 1em;
-    vertical-align: top;
-  } */
+  :global(.item.ghostClass) {
+    background: hsl(0, 0%, 96%) ;
+  }
 </style>

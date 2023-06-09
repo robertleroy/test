@@ -1,28 +1,45 @@
 <script>
   import { base } from '$app/paths';
   import { savedLocations, sortOrder } from '$lib/store';
+  import { tick } from 'svelte';
   import "./app.css";
-  let title = "Home", newItem = "";
+
+  let title = "Home"
+  let newItem = "";
   const routes = [
     { name: "Home", path: "/" },
+    { name: "Todos", path: "/todos" },
     { name: "About", path: "/about" },
   ];
 
-  function addItem() {
+  async function addItem() {
     if ( newItem.length < 3 ) { return }
-    console.log('addItem', newItem);
+    
+    reorderList();
+		await tick();
+    
     const newObj = {
       id: Date.now().toString(36),
       city: newItem,
-      region: "USA",
+      region: "Fs",
       countryCode: "US",
       lat: 40.504123,
       lon: -74.516532,
     };
-    $savedLocations = [...$savedLocations, newObj]
-    $sortOrder = [...$sortOrder, newObj.id]
     newItem = "";
+
+    $savedLocations = [...$savedLocations, newObj];
+    $sortOrder = [...$sortOrder, newObj.id];
   }
+
+  function reorderList() {
+		let arr = [];
+		for (let i = 0; i < $sortOrder.length; i++) {
+			const obj = $savedLocations.find(el => el.id === $sortOrder[i])
+			arr.push(obj);
+		} 
+		$savedLocations = [...arr];
+	}
 
   // onMount(() => {});
 </script>
@@ -36,7 +53,6 @@
     <div class="newItem">
       <input type="text" placeholder="new item ..."
         bind:value={newItem} on:change={addItem} />
-        {newItem.length < 3}
     </div>
 
     <nav>
@@ -52,6 +68,21 @@
 <main>
   <div class="router"><slot /></div>
 </main>
+
+<footer>
+  <div style="display: flex;
+              flex-direction: column;
+              flex-wrap: wrap;
+              gap: 0 1ch;">
+    {#each $savedLocations as item (item.id)}
+    <div class="">{item.city}</div>
+    {/each}
+  </div>
+
+  <div>
+    {$sortOrder}
+  </div>
+</footer>
 
 <style lang="postcss">
   header {
@@ -82,4 +113,18 @@
     max-width: var(--max-width);
     margin: 0 auto;
   }
+
+  footer {
+		background: #fff;
+		padding: 1rem;
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		min-height: 8rem;
+
+		display: flex;
+/* 		justify-content: space-between; */
+		/*     align-items: baseline; */
+		gap: 0 40%;
+	}
 </style>

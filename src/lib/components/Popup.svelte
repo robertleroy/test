@@ -36,7 +36,7 @@
     on:keypress
     on:outclick={() => (showPopup = false)}
   >
-    delete
+  &#128473;
   </div>
 </div>
 
