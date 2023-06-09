@@ -6,12 +6,12 @@
 
   let title = 'Sortable Todo List:';
   let newItem = '';
-  let sortable, drag_list, selectedItem;
+  let sortable_el, drag_list, selectedItem;
   let debug = false;
 
   async function sort_order() {
     await tick();
-    $store.order = sortable.toArray();
+    $store.order = sortable_el.toArray();
   }
 
   async function addItem() {
@@ -43,14 +43,14 @@
   function reorderList() {
 		let arr = [];
 		for (let i = 0; i < $store.order.length; i++) {
-			const obj = $store.list.find(el => el.id === $store.order[i])
+			const obj = $store.list.find(el => el?.id === $store.order[i])
 			arr.push(obj);
 		} 
 		$store.list = [...arr];
 	}
 
   onMount(() => {
-    sortable = Sortable.create(drag_list, {
+    sortable_el = Sortable.create(drag_list, {
       animation: 300,
       touchStartThreshold: 3,
       filter: "input:focus",
