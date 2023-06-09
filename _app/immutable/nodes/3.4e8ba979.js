@@ -1,36 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="./favicon.png" />
-		<meta name="viewport" content="width=device-width" />
-		<meta http-equiv="content-security-policy" content="">
-		<link href="./_app/immutable/assets/0.59f69a54.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.67798070.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.4ba8cd72.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.34577328.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.1cc03ede.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/paths.68aaf235.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.455862dd.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/0.e25f507f.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.87f1b551.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/3.4e8ba979.js">
-	</head>
-	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">
-
-
-<header class=" svelte-14gvelt"><div class="flex svelte-14gvelt"><div class="title"><a href="/test/">Home</a></div>
-
-    <div class="newItem"><input type="text" placeholder="new item ..." value=""></div>
-
-    <nav class="svelte-14gvelt"><div class="route"><a href="/test/">Home</a>
-        </div><div class="route"><a href="/test/todos">Todos</a>
-        </div><div class="route"><a href="/test/about">About</a>
-        </div></nav></div></header>
-
-<main><div class="router svelte-14gvelt"><h2>Sortable - Local Storage - Svelte</h2>
-<pre class="language-js"><!-- HTML_TAG_START --><code class="language-js"><span class="token comment">/* store.js */</span>
+import{S as _,i as h,s as L,k as r,q as O,a as f,l as k,m as i,r as x,h as t,c as d,n as w,b as e,D as j,N as m}from"../chunks/index.4ba8cd72.js";function E(S){let n,u,c,p,g=`<code class="language-js"><span class="token comment">/* store.js */</span>
 <span class="token keyword">import</span> <span class="token punctuation">&#123;</span> browser <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'$app/environment'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">&#123;</span> writable <span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">"svelte/store"</span><span class="token punctuation">;</span>
 
@@ -49,41 +17,4 @@ savedLocations<span class="token punctuation">.</span><span class="token functio
 <span class="token keyword">export</span> <span class="token keyword">const</span> sortOrder <span class="token operator">=</span> <span class="token function">writable</span><span class="token punctuation">(</span>orderStore<span class="token punctuation">)</span><span class="token punctuation">;</span>
 sortOrder<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>
   <span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token operator">=></span> browser <span class="token operator">&amp;&amp;</span> localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">"sortOrder"</span><span class="token punctuation">,</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
-<pre class="language-js"><!-- HTML_TAG_START --><code class="language-js">lib <span class="token operator">/</span> styles <span class="token operator">/</span> forms<span class="token punctuation">.</span>css<span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre></div></main>
-
-<footer class="svelte-14gvelt"><div style="display: flex; flex-direction: column; flex-wrap: wrap; gap: 0 1ch;"></div>
-
-  <div></div>
-</footer>
-
-
-			
-			<script>
-				{
-					__sveltekit_1wi1iky = {
-						assets: "/test",
-						base: new URL(".", location).pathname.slice(0, -1),
-						env: {}
-					};
-
-					const element = document.currentScript.parentElement;
-
-					const data = [null,null];
-
-					Promise.all([
-						import("./_app/immutable/entry/start.67798070.js"),
-						import("./_app/immutable/entry/app.455862dd.js")
-					]).then(([kit, app]) => {
-						kit.start(app, element, {
-							node_ids: [0, 3],
-							data,
-							form: null,
-							error: null
-						});
-					});
-				}
-			</script>
-		</div>
-	</body>
-</html>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code>`,l,o,v='<code class="language-js">lib <span class="token operator">/</span> styles <span class="token operator">/</span> forms<span class="token punctuation">.</span>css<span class="token punctuation">;</span></code>';return{c(){n=r("h2"),u=O("Sortable - Local Storage - Svelte"),c=f(),p=r("pre"),l=f(),o=r("pre"),this.h()},l(s){n=k(s,"H2",{});var a=i(n);u=x(a,"Sortable - Local Storage - Svelte"),a.forEach(t),c=d(s),p=k(s,"PRE",{class:!0});var b=i(p);b.forEach(t),l=d(s),o=k(s,"PRE",{class:!0});var y=i(o);y.forEach(t),this.h()},h(){w(p,"class","language-js"),w(o,"class","language-js")},m(s,a){e(s,n,a),j(n,u),e(s,c,a),e(s,p,a),p.innerHTML=g,e(s,l,a),e(s,o,a),o.innerHTML=v},p:m,i:m,o:m,d(s){s&&t(n),s&&t(c),s&&t(p),s&&t(l),s&&t(o)}}}class I extends _{constructor(n){super(),h(this,n,null,E,L,{})}}export{I as component};

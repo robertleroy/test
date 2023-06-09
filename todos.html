@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width" />
 		<meta http-equiv="content-security-policy" content="">
 		<link href="./_app/immutable/assets/0.59f69a54.css" rel="stylesheet">
-		<link href="./_app/immutable/assets/2.07f72892.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/4.2f420ff5.css" rel="stylesheet">
 		<link href="./_app/immutable/assets/Popup.cab9d31f.css" rel="stylesheet">
 		<link rel="modulepreload" href="./_app/immutable/entry/start.67798070.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.4ba8cd72.js">
@@ -16,7 +16,7 @@
 		<link rel="modulepreload" href="./_app/immutable/entry/app.455862dd.js">
 		<link rel="modulepreload" href="./_app/immutable/nodes/0.e25f507f.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.87f1b551.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/2.5d717286.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/4.457f24fa.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/Popup.dba92ab9.js">
 	</head>
 	<body data-sveltekit-preload-data="hover">
@@ -32,10 +32,18 @@
         </div><div class="route"><a href="/test/about">About</a>
         </div></nav></div></header>
 
-<main><div class="router svelte-14gvelt"><div class="dragzone svelte-yog3kb"><div style="text-align: center; line-height: 2.5; font-variant: small-caps; opacity: 0.6">list
+<main><div class="router svelte-14gvelt"><div class="header svelte-pmtyy2">
+
+  <div class="newItem"><input type="text" placeholder="new item ..." class="svelte-pmtyy2" value=""></div>
+
+  <div class="icon svelte-pmtyy2" style="font-size: 1.5rem;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svelte-pmtyy2"><path fill="none" d="M0 0h24v24H0z"></path><path d="M3 10h11v2H3zM3 6h11v2H3zM3 14h7v2H3zM20.59 11.93l-4.25 4.24-2.12-2.12-1.41 1.41L16.34 19 22 13.34z"></path></svg></div></div>
+
+
+
+<div class="dragzone svelte-pmtyy2"><div style="text-align: center; line-height: 2.5; font-variant: small-caps; opacity: 0.6">list
     </div></div>
 
-<br>
+
 
 </div></main>
 
@@ -63,7 +71,7 @@
 						import("./_app/immutable/entry/app.455862dd.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
-							node_ids: [0, 2],
+							node_ids: [0, 4],
 							data,
 							form: null,
 							error: null
